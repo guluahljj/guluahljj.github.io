@@ -1,0 +1,20 @@
+* {
+  border: 1px red solid;
+}
+body {
+  height: auto;
+  background-color: rgb(70, 213, 213);
+  margin: 0;
+}
+.flex {
+  display: flex;
+}
+.flex1 {
+  flex: 1;
+}
+.column {
+  flex-direction: column;
+}
+.baiSe {
+  background-color: white;
+}

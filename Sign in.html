@@ -1,0 +1,122 @@
+- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录 | 注册</title>
+    <style>
+      body {
+        background-image: url("img/1\ \(34\).png");
+      }
+      /* Style the form elements */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        backdrop-filter: blur(10px);
+      }
+      label {
+        margin-bottom: 10px;
+      }
+      input {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: pink;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0069d9;
+      }
+    </style>
+  </head>
+  <body>
+    <picture></picture>
+    <!-- Login form -->
+    <form id="login-form">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Registration form -->
+    <form id="registration-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Register</button>
+    </form>
+    <script>
+      // Handle login form submission
+      $("#login-form").submit(function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Get the form data
+        var formData = {
+          email: $("#email").val(),
+          password: $("#password").val(),
+        };
+
+        // Send the data to the server
+        $.ajax({
+          type: "POST",
+          url: "path/to/login/script",
+          data: formData,
+          success: function (response) {
+            // Handle the server response
+          },
+          error: function (xhr, status, error) {
+            // Handle errors
+          },
+        });
+      });
+
+      // Handle registration form submission
+      $("#registration-form").submit(function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Get the form data
+        var formData = {
+          name: $("#name").val(),
+          email: $("#email").val(),
+          password: $("#password").val(),
+        };
+
+        // Send the data to the server
+        $.ajax({
+          type: "POST",
+          url: "path/to/registration/script",
+          data: formData,
+          success: function (response) {
+            // Handle the server response
+          },
+          error: function (xhr, status, error) {
+            // Handle errors
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

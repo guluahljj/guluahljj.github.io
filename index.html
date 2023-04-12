@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agulu(||๐_๐)</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* 这里是内容区轮播图的style */
+      .slideshow {
+        position: relative;
+        width: 100%;
+        height: 578px;
+        overflow: hidden;
+      }
+
+      .slideshow-items {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .slideshow-items li {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .slideshow-items li.active {
+        opacity: 1;
+      }
+
+      .slideshow-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+      }
+
+      .slideshow-dots li {
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        border-radius: 50%;
+        background-color: #070000;
+        cursor: pointer;
+        transition: background-color 0.5s ease-in-out;
+      }
+
+      .slideshow-dots li.active {
+        background-color: rgb(255, 255, 255);
+      }
+      .search-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+        backdrop-filter: blur(10px);
+        background-image:url("img/1\ \(12\).jpg")
+      }
+
+      form {
+        display: flex;
+        width: 45%;
+        height:60px;
+        border: 2px solid #f00;
+        border-radius: 0px;
+      }
+
+      input[type="text"] {
+        width: 80%;
+        padding: 10px;
+        border: none;
+        outline: none;
+      }
+
+      button[type="submit"] {
+        width: 20%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background-color: rgb(206, 141, 141);
+        color: #fff;
+        cursor: pointer;
+        border-radius: 20px 20px 20px 20px;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #fff;
+        color: rgb(56, 22, 22);
+      }
+    </style>
+  </head>
+  <body class="flex">
+    <!-- 侧边栏 -->
+    <div class="baiSe" style="width: 200px">
+      <!-- logo -->
+      <div style="height: 200px;background-color:pink;"><a href="jieShaoKuang.html"><img src="img/1 (27).png" height="150px" width="120px" alt="Agulu不是小可爱"></a>
+        <a href="Sign in.html">登录|注册</a>
+      </div>
+      <div class="flex flex1 column " style="overflow: auto"><!-- 做手风琴样式、带图片，毛玻璃 -->
+        
+        <a href="dongMan.html" style="justify-items:center;align-items: center;"><div class="flex flex1 " style="height:100px;justify-items: center;align-items:;"><img src="img/1 (72).png">二次元</div></a>
+        <a><div class="flex" style="height:100px;justify-items:center;"><img src="img/1 (12).jpg"></div></a>
+        <a><div class="flex" style="height:100px;justify-items:center;"><img src="img/1 (12).jpg"></div></a>
+        <a><div class="flex" style="height:100px;justify-items:center;"><img src="img/1 (12).jpg"></div></a>
+        <a><div class="flex" style="height:100px;justify-items:center;"><img src="img/1 (12).jpg"></div></a>
+        
+
+
+
+      </div>
+    
+      
+    </div>
+    <!-- 主区域 -->
+    <div class="flex column flex1">
+      <!-- 头部 -->
+      <div class="baiSe" style="height: 200px">
+        <!-- 搜索框 -->
+
+    <div class="search-container">
+      
+      <form>
+        <input type="text" placeholder="搜索" />
+        <button type="submit"><i class="fa fa-search"></i>🔍</button>
+        <button type="button" onclick="clearInput()">
+          <i class="fa fa-times"></i>×
+        </button>
+      </form>
+      
+    </div>
+      </div>
+      <!-- 内容 -->
+      <div class="flex1 flex column">
+        <div class="flex baiSe" style="height: auto;">
+          <!-- 轮播图 -->
+          <div class="slideshow">
+      <ul class="slideshow-items">
+        <li class="active"><img src="img/1 (15).png" /></li>
+        <li><img src="img/1 (16).png" /></li>
+        <li><img src="img/1 (19).jpg" /></li>
+        <li><img src="img/1 (24).jpg" /></li>
+      </ul>
+      <!-- 轮播图的小点 -->
+      <ul class="slideshow-dots">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+         
+      </div>
+    </div>
+    <script>
+      const slideshow = document.querySelector(".slideshow");
+      const items = document.querySelectorAll(".slideshow-items li");
+      const dots = document.querySelectorAll(".slideshow-dots li");
+      let currentItem = 0;
+
+      slideshow.addEventListener("click", (event) => {
+        if (event.target.parentNode.classList.contains("slideshow-dots")) {
+          items[currentItem].classList.remove("active");
+          dots[currentItem].classList.remove("active");
+          currentItem = Array.from(dots).indexOf(event.target);
+          items[currentItem].classList.add("active");
+          dots[currentItem].classList.add("active");
+        }
+      });
+
+      setInterval(() => {
+        items[currentItem].classList.remove("active");
+        dots[currentItem].classList.remove("active");
+        currentItem = (currentItem + 1) % items.length;
+        items[currentItem].classList.add("active");
+        dots[currentItem].classList.add("active");
+      }, 2000);
+            const form = document.querySelector("form");
+      const input = document.querySelector('input[type="text"]');
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log(input.value);
+      });
+
+      function clearInput() {
+        input.value = "";
+      }
+    </script>
+  </body>
+</html>
